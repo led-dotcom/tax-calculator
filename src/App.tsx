@@ -2,7 +2,7 @@ import './App.css'
 
 function App() {
   return (
-    <main className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+    <main className="container p-6 bg-white rounded space-y-4 sm:flex sm:items-center sm:space-x-4 sm:space-y-0">
       <div className="flex-1">
         <form>
           <input type="text" />
@@ -12,7 +12,10 @@ function App() {
           </button>
         </form>
       </div>
-      <div className="flex-1"></div>
+      <div className="flex-1 p-6 rounded-xl shadow-lg">
+        <h1 className="mx-auto text-center">Total Tax</h1>
+        <p className="mx-auto text-center">$0</p>
+      </div>
     </main>
   )
 }
