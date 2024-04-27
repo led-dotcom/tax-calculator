@@ -4,6 +4,15 @@ import useTaxBrackets from '../../hooks/useTaxBrackets'
 
 import Details from './details/Details'
 
+interface CustomElements extends HTMLFormControlsCollection {
+  income: HTMLInputElement
+  year: HTMLInputElement
+}
+
+interface CustomForm extends HTMLFormElement {
+  readonly elements: CustomElements
+}
+
 export default function Tax() {
   const [income, setIncome] = useState('0')
 
@@ -11,12 +20,12 @@ export default function Tax() {
 
   const [isSubmit, setIsSubmit] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<CustomForm>) => {
     e.preventDefault()
 
-    const { incomeInput, yearInput } = e.target.elements
-    setIncome(incomeInput.value)
-    setYear(yearInput.value)
+    const target = e.currentTarget.elements
+    setIncome(target.income.value)
+    setYear(target.year.value)
 
     setIsSubmit(true)
   }
@@ -49,14 +58,14 @@ export default function Tax() {
             income
           </span>
           <input
-            name="incomeInput"
+            id="income"
             type="text"
             className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
           />
           <span className="block text-sm font-medium text-slate-700">year</span>
           <input
-            name="yearInput"
+            id="year"
             type="text"
             className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
