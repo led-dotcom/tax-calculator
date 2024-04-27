@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 
@@ -21,7 +21,11 @@ export default function Main() {
 
   const enabled = year !== '' && isSubmit
 
-  const { isPending, error, data } = useQuery({
+  const {
+    isPending,
+    error,
+    data: taxBrackets
+  } = useQuery({
     queryKey: [year],
     queryFn: () => fetchTaxYear(year),
     enabled,
@@ -29,13 +33,19 @@ export default function Main() {
     staleTime: 2 * 60 * 1000
   })
 
+  useEffect(() => {
+    if (taxBrackets) {
+      setIsSubmit(false)
+    }
+  }, [taxBrackets])
+
   let content
 
   if (isPending) {
     content = <p>Loading...</p>
   } else if (error) {
     content = <p>Error: {error.message}</p>
-  } else if (data) {
+  } else if (taxBrackets) {
     content = (
       <>
         <h1 className="mx-auto text-center">Total Tax</h1>
