@@ -13,6 +13,11 @@ export default function Tax() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
+    const { incomeInput, yearInput } = e.target.elements
+    setIncome(incomeInput.value)
+    setYear(yearInput.value)
+
     setIsSubmit(true)
   }
 
@@ -44,19 +49,17 @@ export default function Tax() {
             income
           </span>
           <input
+            name="incomeInput"
             type="text"
             className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-            value={income}
-            onChange={(e) => setIncome(e.target.value)}
           />
           <span className="block text-sm font-medium text-slate-700">year</span>
           <input
+            name="yearInput"
             type="text"
             className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
           />
           <button
             disabled={isPending}
