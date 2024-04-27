@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { fetchTaxYear } from '../apis/tax'
 
 export default function useTaxBrackets(year: string, enabled: boolean = false) {
-  const { isPending, error, data } = useQuery({
+  const { fetchStatus, error, data } = useQuery({
     queryKey: [year],
     queryFn: () => fetchTaxYear(year),
     enabled,
@@ -12,5 +12,5 @@ export default function useTaxBrackets(year: string, enabled: boolean = false) {
     // close automatic refetching to show error message
     // retry: false
   })
-  return { isPending, error, taxBrackets: data?.tax_brackets }
+  return { fetchStatus, error, taxBrackets: data?.tax_brackets }
 }
