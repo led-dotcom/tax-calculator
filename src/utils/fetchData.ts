@@ -4,7 +4,7 @@ export async function fetchData(
   options?: RequestInit
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> {
-  const response = await fetch(url, options)
+  const response = await fetch(import.meta.env.VITE_BASE_URL + url, options)
 
   if (!response.ok) {
     throw new Error(
