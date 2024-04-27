@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useQuery } from '@tanstack/react-query'
-
-import { fetchTaxYear } from '../../apis/tax'
+import useTaxBrackets from '../../hooks/useTaxBrackets'
 
 export default function Main() {
   const [year, setYear] = useState('')
@@ -16,19 +14,7 @@ export default function Main() {
 
   const enabled = year !== '' && isSubmit
 
-  const {
-    isPending,
-    error,
-    data: taxBrackets
-  } = useQuery({
-    queryKey: [year],
-    queryFn: () => fetchTaxYear(year),
-    enabled,
-    // cache the data for 2 mins
-    staleTime: 2 * 60 * 1000
-    // close automatic refetching to show error message
-    // retry: false
-  })
+  const { isPending, error, taxBrackets } = useTaxBrackets(year, enabled)
 
   useEffect(() => {
     if (error) {
