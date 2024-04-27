@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 
@@ -10,25 +10,42 @@ const fetchTaxYear = async (year: string) => {
 }
 
 export default function Main() {
-  const [year, setYear] = useState('2022')
+  const [year, setYear] = useState('')
+
+  const [isSubmit, setIsSubmit] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmit(true)
+  }
+
+  const enabled = year !== '' && isSubmit
 
   const { isPending, error, data } = useQuery({
     queryKey: [year],
-    queryFn: () => fetchTaxYear(year)
+    queryFn: () => fetchTaxYear(year),
+    enabled
   })
 
-  useEffect(() => {
-    if (data) {
-      console.log('year:', year)
+  let content
 
-      console.log('data:', data.tax_brackets)
-    }
-  }, [year, data])
+  if (isPending) {
+    content = <p>Loading...</p>
+  } else if (error) {
+    content = <p>Error: {error.message}</p>
+  } else if (data) {
+    content = (
+      <>
+        <h1 className="mx-auto text-center">Total Tax</h1>
+        <p className="mx-auto text-center">$0</p>
+      </>
+    )
+  }
 
   return (
     <main className="container p-6 bg-white rounded space-y-4 sm:flex sm:items-center sm:space-x-4 sm:space-y-0">
       <div className="flex-1 p-6 ">
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <span className="block text-sm font-medium text-slate-700">
             income
           </span>
@@ -50,10 +67,7 @@ export default function Main() {
           </button>
         </form>
       </div>
-      <div className="flex-1 p-6 rounded-xl shadow-lg">
-        <h1 className="mx-auto text-center">Total Tax</h1>
-        <p className="mx-auto text-center">$0</p>
-      </div>
+      <div className="flex-1 p-6 rounded-xl shadow-lg">{content}</div>
     </main>
   )
 }
