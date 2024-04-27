@@ -26,17 +26,15 @@ export default function Main() {
     }
   }, [error, taxBrackets])
 
-  let content
+  let content = (
+    <>
+      <h1 className="mx-auto text-center">Total Tax</h1>
+      <p className="mx-auto text-center">$0</p>
+    </>
+  )
 
   if (error) {
     content = <p>Error: {error.message}</p>
-  } else if (taxBrackets) {
-    content = (
-      <>
-        <h1 className="mx-auto text-center">Total Tax</h1>
-        <p className="mx-auto text-center">$0</p>
-      </>
-    )
   }
 
   return (
