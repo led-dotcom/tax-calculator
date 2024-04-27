@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 
-import { fetchTaxYear } from '../apis/tax'
+import { fetchTaxYear } from '../../apis/tax'
 
 export default function Main() {
   const [year, setYear] = useState('')

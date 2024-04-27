@@ -1,3 +1,4 @@
+// a simple fetch wrapper to handle errors
 export async function fetchData(
   url: string,
   options?: RequestInit

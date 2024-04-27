@@ -1,14 +1,14 @@
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import QueryProvider from './components/QueryProvider'
-import Main from './pages/Main'
+import Tax from './pages/tax/Tax'
 
 import './App.css'
 
 function App() {
   return (
     <QueryProvider>
-      <Main />
+      <Tax />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryProvider>
   )
