@@ -14,17 +14,14 @@ export default function Main() {
 
   const enabled = year !== '' && isSubmit
 
-  const { fetchStatus, error, taxBrackets } = useTaxBrackets(year, enabled)
-
-  console.log('fetchStatus: ', fetchStatus)
-
-  const isPending = fetchStatus === 'fetching'
+  const {
+    isFetching: isPending,
+    error,
+    taxBrackets
+  } = useTaxBrackets(year, enabled)
 
   useEffect(() => {
-    if (error) {
-      setIsSubmit(false)
-    }
-    if (taxBrackets) {
+    if (error || taxBrackets) {
       setIsSubmit(false)
     }
   }, [error, taxBrackets])
@@ -65,7 +62,7 @@ export default function Main() {
           <button
             disabled={isPending}
             className={`inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 ${
-              isPending ? 'cursor-not-allowed' : ''
+              isPending && 'cursor-not-allowed'
             }`}>
             {isPending && (
               <svg
