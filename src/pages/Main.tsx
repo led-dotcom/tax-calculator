@@ -24,7 +24,9 @@ export default function Main() {
   const { isPending, error, data } = useQuery({
     queryKey: [year],
     queryFn: () => fetchTaxYear(year),
-    enabled
+    enabled,
+    // cache the data for 2 mins
+    staleTime: 2 * 60 * 1000
   })
 
   let content
