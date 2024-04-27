@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react'
 
 import useTaxBrackets from '../../hooks/useTaxBrackets'
 
-export default function Main() {
+import Details from './details/Details'
+
+export default function Tax() {
+  const [income, setIncome] = useState('0')
+
   const [year, setYear] = useState('')
 
   const [isSubmit, setIsSubmit] = useState(false)
@@ -26,12 +30,7 @@ export default function Main() {
     }
   }, [error, taxBrackets])
 
-  let content = (
-    <>
-      <h1 className="mx-auto text-center">Total Tax</h1>
-      <p className="mx-auto text-center">$0</p>
-    </>
-  )
+  let content = <Details income={income} taxBrackets={taxBrackets} />
 
   if (error) {
     content = <p>Error: {error.message}</p>
@@ -48,6 +47,8 @@ export default function Main() {
             type="text"
             className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+            value={income}
+            onChange={(e) => setIncome(e.target.value)}
           />
           <span className="block text-sm font-medium text-slate-700">year</span>
           <input
