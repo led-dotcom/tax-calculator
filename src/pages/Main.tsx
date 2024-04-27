@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useQuery } from '@tanstack/react-query'
 
-const fetchTaxYear = async (year: string) => {
-  const response = await fetch(
-    `http://localhost:5001/tax-calculator/tax-year/${year}`
-  )
-  return response.json()
-}
+import { fetchTaxYear } from '../apis/tax'
 
 export default function Main() {
   const [year, setYear] = useState('')
@@ -31,13 +26,18 @@ export default function Main() {
     enabled,
     // cache the data for 2 mins
     staleTime: 2 * 60 * 1000
+    // close automatic refetching to show error message
+    // retry: false
   })
 
   useEffect(() => {
+    if (error) {
+      setIsSubmit(false)
+    }
     if (taxBrackets) {
       setIsSubmit(false)
     }
-  }, [taxBrackets])
+  }, [error, taxBrackets])
 
   let content
 
