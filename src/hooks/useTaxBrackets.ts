@@ -2,6 +2,11 @@ import { useQuery } from '@tanstack/react-query'
 
 import { fetchTaxYear } from '../apis/tax'
 
+/** *
+ * @param year
+ * @param enabled  - if the query should be enabled
+ * @returns
+ */
 export default function useTaxBrackets(year: string, enabled: boolean = false) {
   const { isFetching, error, data } = useQuery({
     queryKey: [year],
