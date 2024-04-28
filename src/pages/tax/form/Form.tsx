@@ -13,7 +13,7 @@ export default function Form({
 }) {
   return (
     <>
-      <form className="space-y-2" onSubmit={onSubmit}>
+      <form aria-label="tax" className="space-y-2" onSubmit={onSubmit}>
         <span className="block text-sm font-medium text-slate-700">
           Annual income
         </span>
@@ -24,6 +24,7 @@ export default function Form({
           <input
             id="income"
             type="number"
+            placeholder="20000"
             className={`mt-1 block w-full pl-6 pr-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 ${
         isValidIncome ? 'border-slate-300' : 'border-red-500'
@@ -39,6 +40,7 @@ export default function Form({
         <input
           id="year"
           type="number"
+          placeholder="2022"
           className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 ${
         isValidYear ? 'border-slate-300' : 'border-red-500'
