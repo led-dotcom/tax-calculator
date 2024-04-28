@@ -25,10 +25,16 @@ export default function Details({
 
   return (
     <>
-      <h1 className="mx-auto text-center">Total Tax</h1>
-      <p className="mx-auto text-center">${totalTax}</p>
+      <div className="space-y-1 mb-10">
+        <h1 className="mx-auto text-center text-sm font-semibold">
+          Total taxes
+        </h1>
+        <p className="mx-auto text-center text-5xl font-semibold text-gray-500">
+          ${totalTax}
+        </p>
+      </div>
       <div className="flex justify-between">
-        <div>tax brackets</div>
+        <div>Tax brackets</div>
         <div>tax per band</div>
       </div>
       <div className="flex justify-between">

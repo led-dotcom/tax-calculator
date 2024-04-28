@@ -10,14 +10,18 @@ export default function Form({
   return (
     <>
       <form className="space-y-4" onSubmit={onSubmit}>
-        <span className="block text-sm font-medium text-slate-700">income</span>
+        <span className="block text-sm font-medium text-slate-700">
+          Annual income
+        </span>
         <input
           id="income"
           type="text"
           className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
         />
-        <span className="block text-sm font-medium text-slate-700">year</span>
+        <span className="block text-sm font-medium text-slate-700">
+          Tax year
+        </span>
         <input
           id="year"
           type="text"
