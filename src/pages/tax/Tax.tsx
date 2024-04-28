@@ -9,7 +9,6 @@ import { CustomForm } from '@/types'
 
 export default function Tax() {
   const [income, setIncome] = useState('')
-
   const [year, setYear] = useState('')
 
   const [isSubmit, setIsSubmit] = useState(false)
