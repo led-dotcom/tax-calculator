@@ -1,33 +1,47 @@
 import { CustomForm } from '@/types'
 
 export default function Form({
+  isValidIncome,
+  isValidYear,
   onSubmit,
   isPending
 }: {
+  isValidIncome: boolean
+  isValidYear: boolean
   onSubmit: (e: React.FormEvent<CustomForm>) => void
   isPending: boolean
 }) {
   return (
     <>
-      <form className="space-y-4" onSubmit={onSubmit}>
+      <form className="space-y-2" onSubmit={onSubmit}>
         <span className="block text-sm font-medium text-slate-700">
           Annual income
         </span>
         <input
           id="income"
-          type="text"
-          className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+          type="number"
+          className={`mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 ${
+        !isValidIncome && 'border-red-500'
+      }`}
         />
+        <p className={`text-xs text-red-500 ${isValidIncome && 'invisible'}`}>
+          Not a valid income.
+        </p>
         <span className="block text-sm font-medium text-slate-700">
           Tax year
         </span>
         <input
           id="year"
-          type="text"
-          className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+          type="number"
+          className={`mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 ${
+        !isValidYear && 'border-red-500'
+      }`}
         />
+        <p className={`text-xs text-red-500 ${isValidYear && 'invisible'}`}>
+          Not a valid year.
+        </p>
         <button
           disabled={isPending}
           className={`inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 ${
