@@ -41,7 +41,7 @@ export default function Tax() {
   }
 
   return (
-    <main className="container p-6 bg-white rounded space-y-4 sm:flex sm:items-center sm:space-x-4 sm:space-y-0">
+    <main className="min-w-96 container p-6 bg-white rounded space-y-4 sm:flex sm:items-center sm:space-x-4 sm:space-y-0">
       <div className="flex-1 p-6">
         <Form isPending={isFetching} onSubmit={handleSubmit} />
       </div>
