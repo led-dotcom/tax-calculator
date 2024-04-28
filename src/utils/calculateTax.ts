@@ -1,3 +1,5 @@
+import { formatValue } from 'react-currency-input-field'
+
 import { TaxBracket } from '../types/tax'
 
 export default function calculateTax(
@@ -61,17 +63,27 @@ export default function calculateTax(
     taxRate = 0
   }
 
+  function format(tax: number) {
+    return formatValue({
+      value: tax.toString(),
+      groupSeparator: ',',
+      decimalSeparator: '.',
+      decimalScale: 0,
+      prefix: '$'
+    })
+  }
+
   return {
-    level1,
-    level1Tax,
-    level2,
-    level2Tax,
-    level3,
-    level3Tax,
-    level4,
-    level4Tax,
-    level5Tax,
-    totalTax,
-    taxRate
+    level1: format(level1),
+    level1Tax: format(level1Tax),
+    level2: format(level2),
+    level2Tax: format(level2Tax),
+    level3: format(level3),
+    level3Tax: format(level3Tax),
+    level4: format(level4),
+    level4Tax: format(level4Tax),
+    level5Tax: format(level5Tax),
+    totalTax: format(totalTax),
+    taxRate: (taxRate * 100).toFixed(2) + '%'
   }
 }

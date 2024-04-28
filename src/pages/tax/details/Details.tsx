@@ -30,40 +30,40 @@ export default function Details({
           Total taxes
         </h1>
         <p className="mx-auto text-center text-5xl font-semibold text-gray-500">
-          ${totalTax}
+          {totalTax}
         </p>
       </div>
-      <div className="pb-2 border-b-2 border-gray-800 flex justify-between">
+      <div className="pb-2 border-b-2 border-gray-800 font-semibold flex justify-between">
         <div>Tax brackets</div>
         <div>Tax per band</div>
       </div>
       <div className="pb-2 border-b-2 border-gray-200 text-sm flex justify-between">
-        <div>${level1} or less</div>
-        <div>${level1Tax}</div>
+        <div>{level1} or less</div>
+        <div>{level1Tax}</div>
       </div>
       <div className="pb-2 border-b-2 border-gray-200 text-sm flex justify-between">
         <div>
-          ${level1} to ${level2}
+          {level1} to {level2}
         </div>
-        <div>${level2Tax}</div>
+        <div>{level2Tax}</div>
       </div>
       <div className="pb-2 border-b-2 border-gray-200 text-sm flex justify-between">
         <div>
-          ${level2} to ${level3}
+          {level2} to {level3}
         </div>
-        <div>${level3Tax}</div>
+        <div>{level3Tax}</div>
       </div>
       <div className="pb-2 border-b-2 border-gray-200 text-sm flex justify-between">
         <div>
-          ${level3} to ${level4}
+          {level3} to {level4}
         </div>
-        <div>${level4Tax}</div>
+        <div>{level4Tax}</div>
       </div>
       <div className="pb-2 border-b-2 border-gray-800 text-sm flex justify-between">
-        <div>More than ${level4}</div>
-        <div>${level5Tax}</div>
+        <div>More than {level4}</div>
+        <div>{level5Tax}</div>
       </div>
-      <div className="flex justify-between">
+      <div className="font-semibold flex justify-between">
         <div className="mx-auto text-center">Tax Rate: </div>
         <div className="mx-auto text-center">{taxRate}</div>
       </div>
