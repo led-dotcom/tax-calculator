@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import useTaxBrackets from '../../hooks/useTaxBrackets'
+import useTaxBrackets from '@/hooks/useTaxBrackets'
 
 import Form from './form/Form'
 import Details from './details/Details'
 
-import { CustomForm } from '../../types'
+import { CustomForm } from '@/types'
 
 export default function Tax() {
   const [income, setIncome] = useState('')

@@ -1,6 +1,6 @@
-import { TaxBracket } from '../../../types/tax'
+import { TaxBracket } from '@/types/tax'
 
-import calculateTax from '../../../utils/calculateTax'
+import calculateTax from '@/utils/calculateTax'
 
 export default function Details({
   income,
