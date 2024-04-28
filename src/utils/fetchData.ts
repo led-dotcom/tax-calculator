@@ -8,7 +8,7 @@ export async function fetchData(
 
   if (!response.ok) {
     throw new Error(
-      `HTTP error! Status: ${response.status} ${response.statusText}`
+      `HTTP error! Status: ${response.status}! ${response.statusText}`
     )
   }
   return response.json()

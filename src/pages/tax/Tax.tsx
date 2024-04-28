@@ -37,7 +37,7 @@ export default function Tax() {
   let content = <Details income={income} taxBrackets={taxBrackets} />
 
   if (error) {
-    content = <p>Error: {error.message}</p>
+    content = <p className="text-red-500">Error: {error.message}</p>
   }
 
   return (
