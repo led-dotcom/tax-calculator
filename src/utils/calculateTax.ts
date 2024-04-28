@@ -13,6 +13,10 @@ export default function calculateTax(
     level1Tax = level1 * level1Rate
   }
 
+  if (isNaN(level1Tax)) {
+    level1Tax = 0
+  }
+
   const level2 = taxBrackets?.[1]?.max ?? 0
   const level2Rate = taxBrackets?.[1]?.rate ?? 0
   let level2Tax = 0
@@ -46,10 +50,16 @@ export default function calculateTax(
     level5Tax = (incomeNum - level4) * level5Rate
   }
 
-  const totalTax =
-    level1Tax + level2Tax + level3Tax + level4Tax + level5Tax ?? 0
+  let totalTax = level1Tax + level2Tax + level3Tax + level4Tax + level5Tax ?? 0
 
-  const taxRate = totalTax / incomeNum
+  if (isNaN(totalTax)) {
+    totalTax = 0
+  }
+
+  let taxRate = totalTax / incomeNum ?? 0
+  if (isNaN(taxRate)) {
+    taxRate = 0
+  }
 
   return {
     level1,

@@ -8,7 +8,7 @@ import Details from './details/Details'
 import { CustomForm } from '../../types'
 
 export default function Tax() {
-  const [income, setIncome] = useState('0')
+  const [income, setIncome] = useState('')
 
   const [year, setYear] = useState('')
 
