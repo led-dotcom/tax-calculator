@@ -25,7 +25,7 @@ export default function Details({
 
   return (
     <>
-      <div className="space-y-1 mb-10">
+      <div className="space-y-2 mb-10">
         <h1 className="mx-auto text-center text-sm font-semibold">
           Total taxes
         </h1>
@@ -33,38 +33,40 @@ export default function Details({
           ${totalTax}
         </p>
       </div>
-      <div className="flex justify-between">
+      <div className="pb-2 border-b-2 border-gray-800 flex justify-between">
         <div>Tax brackets</div>
-        <div>tax per band</div>
+        <div>Tax per band</div>
       </div>
-      <div className="flex justify-between">
+      <div className="pb-2 border-b-2 border-gray-200 text-sm flex justify-between">
         <div>${level1} or less</div>
         <div>${level1Tax}</div>
       </div>
-      <div className="flex justify-between">
+      <div className="pb-2 border-b-2 border-gray-200 text-sm flex justify-between">
         <div>
           ${level1} to ${level2}
         </div>
         <div>${level2Tax}</div>
       </div>
-      <div className="flex justify-between">
+      <div className="pb-2 border-b-2 border-gray-200 text-sm flex justify-between">
         <div>
           ${level2} to ${level3}
         </div>
         <div>${level3Tax}</div>
       </div>
-      <div className="flex justify-between">
+      <div className="pb-2 border-b-2 border-gray-200 text-sm flex justify-between">
         <div>
           ${level3} to ${level4}
         </div>
         <div>${level4Tax}</div>
       </div>
-      <div className="flex justify-between">
+      <div className="pb-2 border-b-2 border-gray-800 text-sm flex justify-between">
         <div>More than ${level4}</div>
         <div>${level5Tax}</div>
       </div>
-      <h1 className="mx-auto text-center">Tax Rate: </h1>
-      <p className="mx-auto text-center">{taxRate}</p>
+      <div className="flex justify-between">
+        <div className="mx-auto text-center">Tax Rate: </div>
+        <div className="mx-auto text-center">{taxRate}</div>
+      </div>
     </>
   )
 }
