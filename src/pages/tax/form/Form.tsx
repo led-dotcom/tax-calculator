@@ -1,4 +1,4 @@
-import { CustomForm } from '../../../types'
+import { CustomForm } from '@/types'
 
 export default function Form({
   onSubmit,

@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.32.0",
     "@tanstack/react-query-devtools": "^5.32.0",
+    "@types/node": "^20.12.7",
     "react": "^18.2.0",
     "react-currency-input-field": "^3.8.0",
     "react-dom": "^18.2.0"
