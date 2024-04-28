@@ -17,14 +17,19 @@ export default function Form({
         <span className="block text-sm font-medium text-slate-700">
           Annual income
         </span>
-        <input
-          id="income"
-          type="number"
-          className={`mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+        <div className="relative">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-sm">
+            $
+          </span>
+          <input
+            id="income"
+            type="number"
+            className={`mt-1 block w-full pl-6 pr-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 ${
-        !isValidIncome && 'border-red-500'
+        isValidIncome ? 'border-slate-300' : 'border-red-500'
       }`}
-        />
+          />
+        </div>
         <p className={`text-xs text-red-500 ${isValidIncome && 'invisible'}`}>
           Not a valid income.
         </p>
@@ -34,9 +39,9 @@ export default function Form({
         <input
           id="year"
           type="number"
-          className={`mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+          className={`mt-1 block w-full px-3 py-2 bg-white border rounded-md text-sm shadow-sm placeholder-slate-400
       focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 ${
-        !isValidYear && 'border-red-500'
+        isValidYear ? 'border-slate-300' : 'border-red-500'
       }`}
         />
         <p className={`text-xs text-red-500 ${isValidYear && 'invisible'}`}>
